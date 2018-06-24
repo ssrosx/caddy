@@ -237,14 +237,14 @@ getcaddy () {
 
 	# Check if plugin should be installed
 	if [[ ! $plugin == "" ]]; then
-		cpubits="$cpubits?plugins=$plugin&license=personal"
+		cpubits="$cpubits?plugins=$plugin&license=personal&telemetry=on"
 		echo -n "  Downloading $caddyname with plugin ($plugin) for $cpubitsname" # Caddy linux
 	else
-		cpubits="$cpubits?license=personal"
+		cpubits="$cpubits?license=personal&telemetry=on"
 		echo -n "  Downloading $caddyname for $cpubitsname" # Caddy linux
 	fi
 
-	echo -n "  cpubits : $cpubits"
+	echo "cpubits : $cpubits"
 	# Star downloading caddy now
 	if ! wget -q $nocert "https://caddyserver.com/download/linux/$cpubits" -O "caddy_linux_custom.tar.gz"; then
 		echo "  [$(tput setaf 1)FAILED$(tput sgr0)]"
